@@ -78,7 +78,7 @@ label {
 
 input {
   height: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   padding: 16px 20px;
   border-style: solid;
   border-width: 1px;
@@ -100,7 +100,7 @@ input {
   background-color: #229bd8;
   padding: 100px;
   display: flex;
-  width: 25%;
+  width: 25vw;
   border: 2px solid#ffffe6;
   border-radius: 5px
 }
@@ -116,6 +116,18 @@ input {
   font-size: 30px;
   background-color: #cceeff;
   padding: 10px;
-  margin-top: 25%;
-  display: flex
+  margin-top: 13vw;
+  display: flex;
+  cursor: pointer;
+}
+
+.failed{
+  color: red;
+  margin-bottom: 10px;
+  visibility: hidden;
+  font-size: 0.8rem;
+}
+
+.active{
+  visibility: visible;
 }
