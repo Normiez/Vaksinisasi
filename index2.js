@@ -53,11 +53,14 @@ const tempatVaksin = {
 }
 
 document.querySelectorAll('.dropdown-item').forEach(item => {
-    item.addEventListener('click', event => {
-        let namaJalanElement = document.getElementById(item.id).innerHTML
-        let idKelurahan = document.getElementById(item.id).parentNode.parentElement.id
-        let kelurahan = document.getElementById(idKelurahan).parentElement.getElementsByClassName("dropdown-item")[0].innerHTML
-        document.getElementById("namaJalan").innerHTML = `${namaJalanElement}, ${kelurahan}`
-    })
+    if (item.classList.length < 2){
+        item.addEventListener('click', event => {
+            let namaJalanElement = document.getElementById(item.id).innerHTML
+            let idKelurahan = document.getElementById(item.id).parentNode.parentElement.id
+            let kelurahan = document.getElementById(idKelurahan).parentElement.getElementsByClassName("dropdown-item")[0].innerHTML
+            document.getElementById("namaJalan").innerHTML = `${namaJalanElement}, ${kelurahan}`
+        })
+    }
+
 })
 

@@ -1,90 +1,152 @@
-/*
-- SDN Gedong 12 Pagi
-- RS Pasar Rebo
-- KPAD Cijantung
-- Gor Bulutangkis Garuda
- */
-
 const tempatVaksin = {
     kalisari: {
-        'SDN 05 KALISARI': 10,
-        'GOR KALISARI': 2,
-        'GOR CIRACAS': 1,
-        'PUSKESMAS KALISARI': 5,
-        'SMPN 179 KALISARI ': 3
+        lokasi:
+            [
+                'SDN 05 KALISARI',
+                'GOR KALISARI',
+                'GOR CIRACAS',
+                'PUSKESMAS KALISARI',
+                'SMPN 179 KALISARI '
+            ],
+            waktu: 'February 5, 2022 07:00:000'
     },
     pekayon: {
-        'SMPN 184 PEKAYON': 1,
-        'PUSKESMAS PEKAYON': 2,
-        'SMAN 106 JAKARTA': 3,
-        'SDN PEKAYON 09 PAGI': 5,
+        lokasi:
+            [
+                'SMPN 184 PEKAYON',
+                'PUSKESMAS PEKAYON',
+                'SMAN 106 JAKARTA',
+                'SDN PEKAYON 09 PAGI'
+            ],
+            waktu: 'February 10, 2022 07:00:000'
     },
     cijantung: {
-        'RS KESDAM JAYA CIJANTUNG': 3,
-        'SMP NEGRI 251': 4,
-        'BAYU YUDHA ARENA': 7,
-        'SMP NEGRI 217 JAKARTA': 2,
-        'STKIP KUSUMANEGARA': 1,
+        lokasi:
+            [
+                'RS KESDAM JAYA CIJANTUNG',
+                'SMP NEGRI 251',
+                'BAYU YUDHA ARENA',
+                'SMP NEGRI 217 JAKARTA',
+                'STKIP KUSUMANEGARA'
+            ],
+            waktu: 'February 7, 2022 07:00:000'
     },
     'Kampung Baru': {
-        'SMAN 38 Kampung baru': 3,
-        'Puskesmas Kelurahan Baru': 4,
-        'SMAN 88': 7,
+        lokasi:
+            [
+                'SMAN 38 Kampung baru',
+                'Puskesmas Kelurahan Baru',
+                'SMAN 88'
+            ],
+            waktu: 'March 15, 2022 07:00:000'
     },
     gedong: {
-        'SDN Gedong 12 Pagi': 1,
-        'RS Pasar Rebo': 3,
-        'KPAD Cijantung': 6,
-        'Gor Bulutangkis Garuda': 2
+        lokasi:
+            [
+                'SDN Gedong 12 Pagi',
+                'RS Pasar Rebo',
+                'KPAD Cijantung',
+                'Gor Bulutangkis Garuda'
+            ],
+            waktu: 'March 3, 2022 07:00:000'
     }
 }
 
-function checkInput(localStorage, param) {
-    for (const key in localStorage) {
-        if (localStorage.hasOwnProperty(param)) {
-            const fail = document.createElement("div")
-            fail.innerHTML = "Maaf, nama anda sudah terdaftar"
-            fail.setAttribute('id', 'failed')
-            document.body.appendChild(fail)
-            return true
-        } else {
-            return false
-        }
-    }
-}
+
+let bambang = {birthDate: '2021-01-07', tempat: { lokasi: 'SDN 05 KALISARI', kelurahan: 'kalisari', waktu: 'February 5, 2022 07:00:000' }}
+let suparman = {birthDate: '2021-01-07', tempat: { lokasi: 'SDN Gedong 12 Pagi', kelurahan: 'gedong', waktu: 'March 3, 2022 07:00:000' }}
+
+localStorage.setItem('Bambang', JSON.stringify(bambang))
+localStorage.setItem('Suparman', JSON.stringify(suparman))
+let local = {...localStorage}
+let waktu = JSON.parse(local['Bambang']).tempat.waktu
+let a =new Date(waktu)
+console.log(a.toLocaleDateString())
 
 let submitBtnEl = document.getElementById("submit-button")
+let closePopUpEl = document.getElementById('popUpBtn')
+let popUpContainerEl = document.getElementById('popupContainer')
+let intervalCountDown;
+let vaksinTimeGlobal = new Date('February 5, 2022 07:00:000');
 
 submitBtnEl.addEventListener("click", function (event) {
     event.preventDefault()
     let birthDate = document.getElementById('tanggalLahir').value
     let name = document.getElementById('fname').value
+    let formError = document.querySelectorAll(".failed-form")
     if (!name) {
-        let nameError = document.getElementById("nameFailed")
-        nameError.classList.add("active")
+        formError[0].classList.add("active")
         return
-    } else if (!birthDate) {
-        let dateError = document.getElementById("dateFailed")
-        dateError.classList.add("active")
+    } 
+    formError[0].classList.remove("active")
+    if (!birthDate) {
+        formError[1].classList.add("active")
         return
     }
+    formError[1].classList.remove("active")
 
-    let flag = checkInput(localStorage, name)
-
-    if (flag === true) {
-        const oke = document.createElement("button")
-        oke.innerHTML = "OK"
-        oke.setAttribute('id', 'okayButton')
-        document.body.appendChild(oke)
-
-        document.getElementById("okayButton").addEventListener("click", function () {
-            let x = document.getElementById("failed")
-            let y = document.getElementById("okayButton")
-            x.remove()
-            y.remove()
-        })
+    if (localStorage[name]) {
+        let objUser = JSON.parse(localStorage[name]);
+        renderPopUp('index', name, objUser)
     } else {
-        localStorage.setItem(name, birthDate)
-        document.location.href = "pg2.html"
+        localStorage.setItem(name, JSON.stringify({birthDate}))
+        document.location.href = "index2.html"
     }
 })
+
+function renderPopUp (page, name, objUser) {
+    if (page === 'index') {
+        const arrInputUser = document.querySelectorAll('.input-popup');
+        arrInputUser[0].innerText = name;
+        const lokasi = objUser.tempat.lokasi;
+        const kelurahan = objUser.tempat.kelurahan;
+        const tanggal = objUser.tempat.waktu
+        vaksinTimeGlobal = new Date(tanggal)
+        arrInputUser[1].innerText = `${lokasi}, Kec. Pasar Rebo, Kel. ${kelurahan[0].toUpperCase() + kelurahan.slice(1)}`;
+        arrInputUser[2].innerText = `${new Date(tanggal).toLocaleDateString()}`
+        updateCountdown(new Date(tanggal));
+    }
+    popUpContainerEl.classList.add('active')
+}
+
+
+
+const days = document.getElementById('days');
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('minutes');
+const seconds = document.getElementById('seconds');
+
+
+// Update countdown time
+function updateCountdown(vaksinTime = vaksinTimeGlobal) {
+	const currentTime = new Date();
+	const diff = vaksinTime - currentTime; // vaksinTime
+
+	const d = Math.floor(diff / 1000 / 60 / 60 / 24);
+	const h = Math.floor(diff / 1000 / 60 / 60) % 24;
+	const m = Math.floor(diff / 1000 / 60) % 60;
+	const s = Math.floor(diff / 1000) % 60;
+
+	days.innerHTML = d;
+	hours.innerHTML = h < 10 ? '0' + h : h;
+	minutes.innerHTML = m < 10 ? '0' + m : m;
+	seconds.innerHTML = s < 10 ? '0' + s : s;
+
+    intervalCountDown = setInterval(updateCountdown, 1000)
+}
+
+
+
+closePopUpEl.addEventListener('click', () => {
+    popUpContainerEl.classList.remove('active')
+    clearInterval(intervalCountDown)
+})
+
+// let loadFirst = true
+// window.addEventListener('load', () => {
+//     clearInterval(intervalCountDown)
+//     // if (loadFirst) {
+//     //     loadFirst = false
+//     //     document.location.href = "index.html";
+//     // } 
+// })
