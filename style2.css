@@ -138,3 +138,24 @@ input {
 .dropdown-menu li:hover > .submenu6{
   display: block;
 }
+
+.button {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding-bottom: 2rem;
+}
+
+.button button {
+  border: 0;
+  width: 50%;
+  height: 50px;
+  cursor: pointer;
+  padding: 15px 0;
+  border-radius: 5px;
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: #229bd8;
+}
