@@ -1,0 +1,70 @@
+ <!--
+HACKTIV8 REGISTRATION FORM
+- DIRECTION
+    Hacktiv8 ingin membuat web untuk halaman registrasi, namun developer hacktiv8 yang ditugaskan untuk membuat ini tidak dapat melanjutkan nya dikarenakan sakit. 
+    Bantulah Hacktiv8 untuk menyempurnakan tampilan web yang sudah dibuat oleh developer sebelumnya!
+
+    Kalian akan diberikan dua file yaitu:
+        1. 3.html
+        2. 3.css
+    File diatas sudah berisikan kode-kode yang sudah dikerjakan oleh developer Hacktiv8 sebelumnya, namun masih belum sempurna.
+    Tugas kalian adalah menyelesaikan kode di dalam file `3.html` agar tampilan web nya sesuai dengan yang diharapkan.
+- NOTES
+    Contoh tampilan website yang diharapkan bisa dilihat di file `3.png`
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="3.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Fredoka+One&family=Maven+Pro:wght@400;500&family=Mulish:wght@500;800&display=swap" rel="stylesheet">
+    <title>Registration Form</title>
+</head>
+<body>  
+    <div class="container">
+        <div class="icon" style="width: 45%;display: flex;">
+            <img src="https://blog.hacktiv8.com/content/images/2018/01/AppIcon.jpg" alt="logo hacktiv8">
+        </div>
+        <div class="form" style="display: flex;flex-direction: column;">
+            <h1>Registration Form</h1>
+            <form>
+                <div class="input-form">
+                    <div class="full-name">
+                        <div class="first-name">
+                            <label for="fname">
+                                First Name
+                            </label>
+                            <input type="text" id="fname" name="fname" >
+                        </div>
+                        <div class="last-name">
+                            <label for="lname">
+                                Last Name
+                            </label>
+                            <input type="text" id="lname" name="lname" >
+                        </div>
+                    </div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" >
+                    <label for="pnumber">Phone Number</label>
+                    <input type="number" id="pnumber" name="pnumber" >
+                </div>
+                <div class="button">
+                    <button id="submit-button" type="submit">REGISTER NOW</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function(event){
+            event.preventDefault()
+            alert("Thank you for your registration!")
+        });
+    </script>
+</body>
+</html>
