@@ -53,9 +53,11 @@ const tempatVaksin = {
 }
 
 
-let timeStamp = new Date()
-let username = {date: '2021-01-07', tempat: { lokasi: 'SDN 05 KALISARI', kelurahan: 'kalisari', waktu: 'February 5, 2022 07:00:000' }, timeStamp }
-localStorage.setItem('Bambang', JSON.stringify(username))
+let bambang = {birthDate: '2021-01-07', tempat: { lokasi: 'SDN 05 KALISARI', kelurahan: 'kalisari', waktu: 'February 5, 2022 07:00:000' }}
+let suparman = {birthDate: '2021-01-07', tempat: { lokasi: 'SDN Gedong 12 Pagi', kelurahan: 'gedong', waktu: 'March 3, 2022 07:00:000' }}
+
+localStorage.setItem('Bambang', JSON.stringify(bambang))
+localStorage.setItem('Suparman', JSON.stringify(suparman))
 let local = {...localStorage}
 let waktu = JSON.parse(local['Bambang']).tempat.waktu
 let a =new Date(waktu)
@@ -64,6 +66,8 @@ console.log(a.toLocaleDateString())
 let submitBtnEl = document.getElementById("submit-button")
 let closePopUpEl = document.getElementById('popUpBtn')
 let popUpContainerEl = document.getElementById('popupContainer')
+let intervalCountDown;
+let vaksinTimeGlobal = new Date('February 5, 2022 07:00:000');
 
 submitBtnEl.addEventListener("click", function (event) {
     event.preventDefault()
@@ -81,16 +85,13 @@ submitBtnEl.addEventListener("click", function (event) {
     }
     formError[1].classList.remove("active")
 
-    let objUser = JSON.parse(localStorage[name]);
-    if (objUser) {
+    if (localStorage[name]) {
+        let objUser = JSON.parse(localStorage[name]);
         renderPopUp('index', name, objUser)
     } else {
+        localStorage.setItem(name, JSON.stringify({birthDate}))
         document.location.href = "index2.html"
     }
-})
-
-closePopUpEl.addEventListener('click', () => {
-    popUpContainerEl.classList.remove('active')
 })
 
 function renderPopUp (page, name, objUser) {
@@ -100,8 +101,52 @@ function renderPopUp (page, name, objUser) {
         const lokasi = objUser.tempat.lokasi;
         const kelurahan = objUser.tempat.kelurahan;
         const tanggal = objUser.tempat.waktu
+        vaksinTimeGlobal = new Date(tanggal)
         arrInputUser[1].innerText = `${lokasi}, Kec. Pasar Rebo, Kel. ${kelurahan[0].toUpperCase() + kelurahan.slice(1)}`;
         arrInputUser[2].innerText = `${new Date(tanggal).toLocaleDateString()}`
+        updateCountdown(new Date(tanggal));
     }
     popUpContainerEl.classList.add('active')
 }
+
+
+
+const days = document.getElementById('days');
+const hours = document.getElementById('hours');
+const minutes = document.getElementById('minutes');
+const seconds = document.getElementById('seconds');
+
+
+// Update countdown time
+function updateCountdown(vaksinTime = vaksinTimeGlobal) {
+	const currentTime = new Date();
+	const diff = vaksinTime - currentTime; // vaksinTime
+
+	const d = Math.floor(diff / 1000 / 60 / 60 / 24);
+	const h = Math.floor(diff / 1000 / 60 / 60) % 24;
+	const m = Math.floor(diff / 1000 / 60) % 60;
+	const s = Math.floor(diff / 1000) % 60;
+
+	days.innerHTML = d;
+	hours.innerHTML = h < 10 ? '0' + h : h;
+	minutes.innerHTML = m < 10 ? '0' + m : m;
+	seconds.innerHTML = s < 10 ? '0' + s : s;
+
+    intervalCountDown = setInterval(updateCountdown, 1000)
+}
+
+
+
+closePopUpEl.addEventListener('click', () => {
+    popUpContainerEl.classList.remove('active')
+    clearInterval(intervalCountDown)
+})
+
+// let loadFirst = true
+// window.addEventListener('load', () => {
+//     clearInterval(intervalCountDown)
+//     // if (loadFirst) {
+//     //     loadFirst = false
+//     //     document.location.href = "index.html";
+//     // } 
+// })

@@ -26,36 +26,56 @@
                 <span class="input-popup" id="jamPopUp">07:00 WIB</span>
             </h4>
             <div id="countdown" class="countdown">
+                <div class="time">
+                    <h2 id="days"></h2>
+                    <small>Days</small>
+                </div>
+                <div class="time">
+                    <h2 id="hours"></h2>
+                    <small>Hours</small>
+                </div>
+                <div class="time">
+                    <h2 id="minutes"></h2>
+                    <small>Minutes</small>
+                </div>
+                <div class="time">
+                    <h2 id="seconds"></h2>
+                    <small>Seconds</small>
+                </div>
+            </div>
+            <div class="button">
+                <button id="popUpBtn">close</button>
             </div>
         </div>
-        <div class="container">
-            <div class="icon" style="width: 45%; height: 10%; display: flex;">
-                <img src="WhatsApp Image 2022-01-27 at 14.41.06 (1).jpeg">
-            </div>
-            <div class="form">
-                <h1>VAKSIN KECAMATAN PASAR REBO</h1>
-                <form>
-                    <div class="input-form">
-                        <div class="full-name">
-                            <div class="first-name">
-                                <label for="fname">
-                                    <b>Nama Lengkap</b>
-                                </label>
-                                <input required type="text" id="fname" name="fname" placeholder="Masukkan Nama Lengkap">
-                                <div class="failed-form" id="nameFailed">Nama tidak boleh kosong</div>
-                            </div>
+    </div>
+    <div class="container">
+        <div class="icon" style="width: 45%; height: 10%; display: flex;">
+            <img src="WhatsApp Image 2022-01-27 at 14.41.06 (1).jpeg">
+        </div>
+        <div class="form">
+            <h1>VAKSIN KECAMATAN PASAR REBO</h1>
+            <form>
+                <div class="input-form">
+                    <div class="full-name">
+                        <div class="first-name">
+                            <label for="fname">
+                                <b>Nama Lengkap</b>
+                            </label>
+                            <input required type="text" id="fname" name="fname" placeholder="Masukkan Nama Lengkap">
+                            <div class="failed-form" id="nameFailed">Nama tidak boleh kosong</div>
                         </div>
-                        <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
-                        <input required type="date" id="tanggalLahir" name="tanggalLahir" required>
-                        <div class="failed-form" id="dateFailed">Tanggal lahir tidak boleh kosong</div>
                     </div>
-                    <div class="button button">
-                        <button id="submit-button" type="submit">DAFTAR SEKARANG</button>
-                    </div>
-                </form>
-            </div>
+                    <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
+                    <input required type="date" id="tanggalLahir" name="tanggalLahir" required>
+                    <div class="failed-form" id="dateFailed">Tanggal lahir tidak boleh kosong</div>
+                </div>
+                <div class="button button">
+                    <button id="submit-button" type="submit">DAFTAR SEKARANG</button>
+                </div>
+            </form>
         </div>
-        <script src="index.js"></script>
+    </div>
+    <script src="index.js"></script>
 </body>
 
 </html>
