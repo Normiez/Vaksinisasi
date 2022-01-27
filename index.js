@@ -39,4 +39,19 @@ const tempatVaksin = {
     }
 }
 
-console.log(Object.keys(tempatVaksin.kalisari))
+let userData = []
+
+let submitBtnEl = document.getElementById("submit-button")
+
+submitBtnEl.addEventListener("click", function (event) {
+    event.preventDefault()
+    let birthDate = document.getElementById('tanggalLahir').value
+    let name = document.getElementById('fname').value
+    let obj = {
+        nama: name,
+        tanggalLahir: birthDate
+    }
+    userData.push(obj)
+    console.log(userData, "<<<<<<<<<")
+    
+})
