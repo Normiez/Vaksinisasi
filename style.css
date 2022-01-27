@@ -182,3 +182,7 @@ input {
 .active{
   visibility: visible;
 }
+
+.input-popup {
+  color: #229bd8;
+}

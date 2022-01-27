@@ -1,10 +1,3 @@
-/*
-- SDN Gedong 12 Pagi
-- RS Pasar Rebo
-- KPAD Cijantung
-- Gor Bulutangkis Garuda
- */
-
 const tempatVaksin = {
     kalisari: {
         lokasi:
@@ -64,24 +57,9 @@ let timeStamp = new Date()
 let username = {date: '2021-01-07', tempat: { lokasi: 'SDN 05 KALISARI', kelurahan: 'kalisari', waktu: 'February 5, 2022 07:00:000' }, timeStamp }
 localStorage.setItem('Bambang', JSON.stringify(username))
 let local = {...localStorage}
-let waktu = JSON.parse(local['Bambang']).timeStamp
-console.log(local)
-
-function checkInput(local, param) {
-
-
-    // for (const key in localStorage) {
-    //     if (localStorage.hasOwnProperty(param)) {
-    //         const fail = document.createElement("div")
-    //         fail.innerHTML = "Maaf, nama anda sudah terdaftar"
-    //         fail.setAttribute('id', 'failed')
-    //         document.body.appendChild(fail)
-    //         return true
-    //     } else {
-    //         return false
-    //     }
-    // }
-}
+let waktu = JSON.parse(local['Bambang']).tempat.waktu
+let a =new Date(waktu)
+console.log(a.toLocaleDateString())
 
 let submitBtnEl = document.getElementById("submit-button")
 let closePopUpEl = document.getElementById('popUpBtn')
@@ -103,13 +81,11 @@ submitBtnEl.addEventListener("click", function (event) {
     }
     formError[1].classList.remove("active")
 
-    // let flag = checkInput(local, name)
-
-    if (localStorage[name]) {
-        popUpContainerEl.classList.add('active')
+    let objUser = JSON.parse(localStorage[name]);
+    if (objUser) {
+        renderPopUp('index', name, objUser)
     } else {
-        localStorage.setItem(name, birthDate)
-        document.location.href = "pg2.html"
+        document.location.href = "index2.html"
     }
 })
 
@@ -117,6 +93,15 @@ closePopUpEl.addEventListener('click', () => {
     popUpContainerEl.classList.remove('active')
 })
 
-function renderPopUp () {
-
+function renderPopUp (page, name, objUser) {
+    if (page === 'index') {
+        const arrInputUser = document.querySelectorAll('.input-popup');
+        arrInputUser[0].innerText = name;
+        const lokasi = objUser.tempat.lokasi;
+        const kelurahan = objUser.tempat.kelurahan;
+        const tanggal = objUser.tempat.waktu
+        arrInputUser[1].innerText = `${lokasi}, Kec. Pasar Rebo, Kel. ${kelurahan[0].toUpperCase() + kelurahan.slice(1)}`;
+        arrInputUser[2].innerText = `${new Date(tanggal).toLocaleDateString()}`
+    }
+    popUpContainerEl.classList.add('active')
 }

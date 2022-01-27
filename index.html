@@ -14,42 +14,48 @@
 <body style="background-image :url(https://pusatinformasitraining.com/wp-content/uploads/2020/06/13986.jpg)">
     <div class="popup-container" id="popupContainer">
         <div class="popup-box">
-            <h2>Selamat Andrizal Chaidar kamu berhasil mendaftar untuk antrian vaksin</h2>
-            <h4>Lokasi untuk vaksinasi kamu berada di SDN 05 KALISARI, Kec. Pasar Rebo, Kel. Kalisari pada tanggal 5 februari 2022</h4>
-            <h1 class="countdown">COUNTDOWN</h1>
-            <div class="button">
-                <button id="popUpBtn">close</button>
+            <h2>Selamat
+                <span class="input-popup" id="namePopUp">Andrizal Chaidar</span>
+                kamu berhasil mendaftar untuk antrian vaksin
+            </h2>
+            <h4>Lokasi untuk vaksinasi kamu berada di
+                <span class="input-popup" id="lokasiPopUp">SDN 05 KALISARI, Kec. Pasar Rebo, Kel. Kalisari</span>
+                pada tanggal
+                <span class="input-popup" id="waktuPopUp">5 februari 2022</span>
+                pukul
+                <span class="input-popup" id="jamPopUp">07:00 WIB</span>
+            </h4>
+            <div id="countdown" class="countdown">
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="icon" style="width: 45%; height: 10%; display: flex;">
-            <img src="WhatsApp Image 2022-01-27 at 14.41.06 (1).jpeg">
-        </div>
-        <div class="form">
-            <h1>VAKSIN KECAMATAN PASAR REBO</h1>
-            <form>
-                <div class="input-form">
-                    <div class="full-name">
-                        <div class="first-name">
-                            <label for="fname">
-                                <b>Nama Lengkap</b>
-                            </label>
-                            <input required type="text" id="fname" name="fname" placeholder="Masukkan Nama Lengkap">
-                            <div class="failed-form" id="nameFailed">Nama tidak boleh kosong</div>
+        <div class="container">
+            <div class="icon" style="width: 45%; height: 10%; display: flex;">
+                <img src="WhatsApp Image 2022-01-27 at 14.41.06 (1).jpeg">
+            </div>
+            <div class="form">
+                <h1>VAKSIN KECAMATAN PASAR REBO</h1>
+                <form>
+                    <div class="input-form">
+                        <div class="full-name">
+                            <div class="first-name">
+                                <label for="fname">
+                                    <b>Nama Lengkap</b>
+                                </label>
+                                <input required type="text" id="fname" name="fname" placeholder="Masukkan Nama Lengkap">
+                                <div class="failed-form" id="nameFailed">Nama tidak boleh kosong</div>
+                            </div>
                         </div>
+                        <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
+                        <input required type="date" id="tanggalLahir" name="tanggalLahir" required>
+                        <div class="failed-form" id="dateFailed">Tanggal lahir tidak boleh kosong</div>
                     </div>
-                    <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
-                    <input required type="date" id="tanggalLahir" name="tanggalLahir" required>
-                    <div class="failed-form" id="dateFailed">Tanggal lahir tidak boleh kosong</div>
-                </div>
-                <div class="button button">
-                    <button id="submit-button" type="submit">DAFTAR SEKARANG</button>
-                </div>
-            </form>
+                    <div class="button button">
+                        <button id="submit-button" type="submit">DAFTAR SEKARANG</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <script src="index.js"></script>
+        <script src="index.js"></script>
 </body>
 
 </html>
