@@ -55,3 +55,16 @@ submitBtnEl.addEventListener("click", function (event) {
     console.log(userData, "<<<<<<<<<")
     
 })
+
+
+let iconMainEl = document.getElementById('iconMain')
+let closePopUpEl = document.getElementById('popUpBtn')
+let popUpContainerEl = document.getElementById('popupContainer')
+
+iconMainEl.addEventListener('click', () => {
+    popUpContainerEl.classList.add('active')
+})
+
+closePopUpEl.addEventListener('click', () => {
+    popUpContainerEl.classList.remove('active')
+})
