@@ -63,7 +63,7 @@ let submitBtnEl = document.getElementById("submit-button")
 let closePopUpEl = document.getElementById('popUpBtn')
 let popUpContainerEl = document.getElementById('popupContainer')
 let intervalCountDown;
-let vaksinTimeGlobal = new Date('February 5, 2022 07:00:000');
+let vaksinTimeGlobal;
 
 submitBtnEl.addEventListener("click", function (event) {
     event.preventDefault()
