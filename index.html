@@ -26,10 +26,12 @@
                                 <b>Nama Lengkap</b>
                             </label>
                             <input required type="text" id="fname" name="fname" placeholder="Masukkan Nama Lengkap">
+                            <div class="failed" id="nameFailed">Nama tidak boleh kosong</div>
                         </div>
                     </div>
                     <label for="tanggalLahir"><b>Tanggal Lahir</b></label>
                     <input required type="date" id="tanggalLahir" name="tanggalLahir" required>
+                    <div class="failed" id="dateFailed">Tanggal lahir tidak boleh kosong</div>
                 </div>
                 <div class="button button">
                     <button id="submit-button" type="submit">DAFTAR SEKARANG</button>
@@ -37,7 +39,6 @@
             </form>
         </div>
     </div>
-
     <script src="index.js"></script>
 </body>
 
