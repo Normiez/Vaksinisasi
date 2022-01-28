@@ -14,7 +14,13 @@ body {
   background-color: white;
   margin-left: 116px;
   margin-right: 116px;
+  min-height: 418px;
+  min-width: 1370px;
 }
+
+.icon {
+ box-sizing: border-box;
+ }
 
 .icon img {
   width: 100%;
@@ -24,8 +30,9 @@ body {
 
 .form {
   width: 55%;
-  padding: 5px 25px;
+  padding: 0px 25px;
   font-family: "Mulish", sans-serif;
+  padding-top:  5px;
 }
 
 .form h1 {
@@ -158,7 +165,8 @@ input {
 
 .popup-box > h2 {
   text-align: center;
-  padding: 1.5rem
+  padding: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .popup-box > h4 {
@@ -166,6 +174,7 @@ input {
   padding: 0 1.5rem 0 1.5rem;
   margin-bottom: 0;
   margin-top: 50px;
+  font-size: 1.1rem;
 }
 
 .popup-box .countdown {

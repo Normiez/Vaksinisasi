@@ -61,6 +61,8 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
             let idKelurahan = document.getElementById(item.id).parentNode.parentElement.id
             let kelurahan = document.getElementById(idKelurahan).parentElement.getElementsByClassName("dropdown-item")[0].innerHTML
             document.getElementById("namaJalan").innerHTML = `${namaJalanElement}, ${kelurahan}`
+            let formError = document.querySelector(".failed-form")
+            formError.classList.remove('active')
 
             let birthDate = localStorage.getItem('birthDate')
             let name = localStorage.getItem('userName')
@@ -82,8 +84,9 @@ submitBtnEl.addEventListener("click", function (event) {
     let name = localStorage.getItem('userName')
     let formError = document.querySelector(".failed-form")
 
-    if (document.getElementById("namaJalan").innerText === "") {
+    if (document.getElementById("namaJalan").innerHTML === "") {
         formError.classList.add('active')
+        return
     }
 
     formError.classList.remove('active')

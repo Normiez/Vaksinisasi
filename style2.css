@@ -7,11 +7,15 @@ body {
   background-color: #f9f5ec;
 }
 
-.container {
+.containerP2 {
   display: flex;
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
   background-color: white;
+  margin-left: 116px;
+  margin-right: 116px;
+  min-height: 418px;
+  min-width: 1370px;
 }
 
 .icon img {
@@ -164,7 +168,7 @@ input {
     color: red;
     margin-bottom: 10px;
     visibility: hidden;
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .popup-container {
@@ -185,18 +189,18 @@ input {
   position: relative  ;
   background: rgba(255, 255, 255, 0.9);
   width: 750px;
-  height: 500px;
+  height: 450px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 0 5px rgb(0, 0, 0 / 20%);
   border: 3px solid rgb(34, 155, 216, 0.08);
+  border-radius: 20px;
 }
 
 .popup-box > h2 {
   text-align: center;
-  padding: 1.5rem
+  padding: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .popup-box > h4 {
@@ -204,6 +208,7 @@ input {
   padding: 0 1.5rem 0 1.5rem;
   margin-bottom: 0;
   margin-top: 50px;
+  font-size: 1.1rem;
 }
 
 .popup-box .countdown {
@@ -219,6 +224,7 @@ input {
 .button #popUpBtn {
   width: 100px;
   font-size: 1rem;
+
 }
 
 .input-popup {
@@ -264,6 +270,17 @@ input {
 	transform: scale(1);
   font-weight: normal;
 	font-size: 15px;
+}
+
+
+.nama-jalan {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nama-jalan-title {
+  font-size: 1.2rem;
+  font-weight: normal;
 }
 
 .active{
